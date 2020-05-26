@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="门户自动化测试" duration-ms="53581" started-at="2020-05-12T09:57:31Z" finished-at="2020-05-12T09:58:25Z">
+    <groups>
+    </groups>
+    <test name="auto-www" duration-ms="53581" started-at="2020-05-12T09:57:31Z" finished-at="2020-05-12T09:58:25Z">
+      <class name="com.sh.stt.testCase.index.HLIndex">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:com.sh.stt.testCase.index.HLIndex@58ebfd03]" name="openBrowser" is-config="true" duration-ms="5769" started-at="2020-05-12T17:57:31Z" finished-at="2020-05-12T17:57:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method status="PASS" signature="openURL()[pri:0, instance:com.sh.stt.testCase.index.HLIndex@58ebfd03]" name="openURL" is-config="true" duration-ms="1769" started-at="2020-05-12T17:57:37Z" finished-at="2020-05-12T17:57:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openURL -->
+        <test-method status="FAIL" signature="bottomListTest()[pri:0, instance:com.sh.stt.testCase.index.HLIndex@58ebfd03]" name="bottomListTest" duration-ms="45366" started-at="2020-05-12T17:57:39Z" finished-at="2020-05-12T17:58:24Z">
+          <exception class="java.lang.Throwable">
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable
+	at message : 标题含有'404'，当前URL:http://hl.10086.cn/apps/qry/bill-query/bill-query.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有'错误'，当前URL:http://hl.10086.cn/apps/qry/bill-query/bill-query.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有'404'，当前URL:http://hl.10086.cn/apps/mall/phone-store/native/index.html#none，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有'错误'，当前URL:http://hl.10086.cn/apps/mall/phone-store/native/index.html#none，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有'404'，当前URL:http://hl.10086.cn/apps/busi/main-pkg-4gfee/mainPkg4GFee.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有'错误'，当前URL:http://hl.10086.cn/apps/busi/main-pkg-4gfee/mainPkg4GFee.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有'错误'，当前URL:http://hl.10086.cn/apps/mall/phone-store/native/index.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bottomListTest -->
+        <test-method status="PASS" signature="close()[pri:0, instance:com.sh.stt.testCase.index.HLIndex@58ebfd03]" name="close" is-config="true" duration-ms="617" started-at="2020-05-12T17:58:24Z" finished-at="2020-05-12T17:58:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- com.sh.stt.testCase.index.HLIndex -->
+    </test> <!-- auto-www -->
+  </suite> <!-- 门户自动化测试 -->
+</testng-results>

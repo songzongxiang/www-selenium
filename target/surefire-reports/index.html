@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-门户自动化测试">
+              <span class="suite-name border-passed">门户自动化测试</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-门户自动化测试">
+                    <span>D:\IDEA\auto-www\testNG.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-门户自动化测试">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-门户自动化测试">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-门户自动化测试">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-门户自动化测试">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-门户自动化测试">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-门户自动化测试">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">1 method,   1 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-门户自动化测试" class="hide-methods failed suite-门户自动化测试"> (hide)</a> <!-- hide-methods failed suite-门户自动化测试 -->
+                      <a href="#" panel-name="suite-门户自动化测试" class="show-methods failed suite-门户自动化测试"> (show)</a> <!-- show-methods failed suite-门户自动化测试 -->
+                    </span>
+                    <div class="method-list-content failed suite-门户自动化测试">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-门户自动化测试" title="com.sh.stt.testCase.index.HLIndex" hash-for-method="bottomListTest">bottomListTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-门户自动化测试 -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-门户自动化测试" class="panel 门户自动化测试">
+          <div class="suite-门户自动化测试-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.sh.stt.testCase.index.HLIndex</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="bottomListTest">
+                  </a> <!-- bottomListTest -->
+                  <span class="method-name">bottomListTest</span>
+                  <div class="stack-trace">java.lang.Throwable
+	at message : 标题含有&apos;404&apos;，当前URL:http://hl.10086.cn/apps/qry/bill-query/bill-query.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有&apos;错误&apos;，当前URL:http://hl.10086.cn/apps/qry/bill-query/bill-query.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有&apos;404&apos;，当前URL:http://hl.10086.cn/apps/mall/phone-store/native/index.html#none，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有&apos;错误&apos;，当前URL:http://hl.10086.cn/apps/mall/phone-store/native/index.html#none，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有&apos;404&apos;，当前URL:http://hl.10086.cn/apps/busi/main-pkg-4gfee/mainPkg4GFee.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有&apos;错误&apos;，当前URL:http://hl.10086.cn/apps/busi/main-pkg-4gfee/mainPkg4GFee.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+	at message : 标题含有&apos;错误&apos;，当前URL:http://hl.10086.cn/apps/mall/phone-store/native/index.html，当前标题：错误404_黑龙江移动 expected [false] but found [true] in method : .bottomListTest(HLIndex:325)
+	at com.sh.stt.testCase.index.HLIndex.bottomListTest(HLIndex.java:325)
+
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-门户自动化测试-class-passed -->
+        </div> <!-- panel 门户自动化测试 -->
+        <div panel-name="test-xml-门户自动化测试" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">D:\IDEA\auto-www\testNG.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot; name=&quot;门户自动化测试&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;com.sh.stt.util.AssertListener&quot;/&gt;
+  &lt;/listeners&gt;
+  &lt;test name=&quot;auto-www&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.sh.stt.testCase.index.HLIndex&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;bottomListTest&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- com.sh.stt.testCase.index.HLIndex --&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- auto-www --&gt;
+&lt;/suite&gt; &lt;!-- 门户自动化测试 --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-门户自动化测试" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for 门户自动化测试</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">auto-www (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-门户自动化测试" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for 门户自动化测试</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-门户自动化测试" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for 门户自动化测试</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_门户自动化测试');
+function tableData_门户自动化测试() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(1);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'bottomListTest')
+data.setCell(0, 2, 'com.sh.stt.testCase.index.HLIndex')
+data.setCell(0, 3, 45366);
+window.suiteTableData['门户自动化测试']= { tableData: data, tableDiv: 'times-div-门户自动化测试'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 45 seconds</span>
+              <div id="times-div-门户自动化测试">
+              </div> <!-- times-div-门户自动化测试 -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-门户自动化测试" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for 门户自动化测试</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-门户自动化测试" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">17 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">com.sh.stt.testCase.index.HLIndex</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">businessDtddTest</span>
+                <br/>
+                <span class="ignored-method-name">advCarListTest</span>
+                <br/>
+                <span class="ignored-method-name">operateListTest</span>
+                <br/>
+                <span class="ignored-method-name">featureDtddTest</span>
+                <br/>
+                <span class="ignored-method-name">gzdtListTest</span>
+                <br/>
+                <span class="ignored-method-name">intelHardDtddTest</span>
+                <br/>
+                <span class="ignored-method-name">yhgundongListTest</span>
+                <br/>
+                <span class="ignored-method-name">mobileListTest</span>
+                <br/>
+                <span class="ignored-method-name">noticeListTest</span>
+                <br/>
+                <span class="ignored-method-name">familyBusDtddTest</span>
+                <br/>
+                <span class="ignored-method-name">mobileDtddTest</span>
+                <br/>
+                <span class="ignored-method-name">eventsListTest</span>
+                <br/>
+                <span class="ignored-method-name">packageDtddTest</span>
+                <br/>
+                <span class="ignored-method-name">featureListTest</span>
+                <br/>
+                <span class="ignored-method-name">intelHardListTest</span>
+                <br/>
+                <span class="ignored-method-name">quickListTest</span>
+                <br/>
+                <span class="ignored-method-name">queryServiceDtddTest</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-门户自动化测试" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.sh.stt.testCase.index.HLIndex</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">openBrowser</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">openURL</span>
+                <span class="method-start">5773 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">bottomListTest</span>
+                <span class="method-start">7543 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">close</span>
+                <span class="method-start">52942 ms</span>
+              </div> <!-- configuration-class after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>
