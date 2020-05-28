@@ -10,7 +10,7 @@ public class FeePage {
     /**
      * 加载更多
      */
-    public static By feeMoreEle = By.xpath(".//*[@id='more_pcxb']/a");
+    public static By feeMoreEle = By.linkText("加载更多");
 
     /**
      * 基础套餐/可选包内容

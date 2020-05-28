@@ -66,18 +66,11 @@ public class IndexPage {
      */
     public static By operateListEle = By.xpath("//div[@id='louti2']/*/*/*/a");
 
-
     /**
      * 3F 手机专区
      */
     //内容区List
-    public static By mobileListEle = By.xpath("//div[@id='louti3']/*/*/*/a");
-
-    /**
-     * 4F 智能硬件
-     */
-    //内容区List
-    public static By intelHardListEle = By.xpath("//div[@id='louti4']/*/*/*/a");
+    public static By mobileListEle = By.xpath("//div[@id='louti3']/*/*/div[@id='fl_3_4' or @id='fl_3_5']/a/p");
 
     /**
      * 6F 自定义楼层
@@ -85,24 +78,13 @@ public class IndexPage {
     //内容区List
     public static By customListEle = By.xpath("//div[@id='louti7']/*/*/*/a");
 
-
-    /**
-     * 定位特色专区按钮
-     */
-    public static By featureEle = By.xpath(".//*[@id='topHead']/div[14]/dl/dd/a/h4");
-
-    /**
-     * 定位公告按钮
-     */
-    public static By noticeEle = By.xpath(".//*[@id='topHead']/div[15]/ul/li/a");
-
-    /**
-     * 定位国资动态按钮
-     */
-    public static By gzdtEle = By.xpath(".//*[@id='topHead']/div[16]/ul/li/a");
-
     /**
      * 定位底部链接区按钮
      */
     public static By bottomEle = By.xpath(".//*[@id='bottom1200']/div/div/a");
+
+    /**
+     * 右侧在线客服
+     */
+    public static By onlineServiceList = By.xpath(".//*[@id='topHead']/ul/li/a[starts-with(@class,'logo')]");
 }

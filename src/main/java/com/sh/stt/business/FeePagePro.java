@@ -26,7 +26,6 @@ public class FeePagePro {
                 //判断元素是否显示--解决页面style="display: none;"
                 if(element.isDisplayed() == true){
                     listString.add(element.getAttribute("wtcode"));
-                    System.out.println(element.getAttribute("wtcode"));
                 }
             }
         }

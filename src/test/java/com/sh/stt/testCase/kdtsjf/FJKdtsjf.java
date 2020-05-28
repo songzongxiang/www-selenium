@@ -1,7 +1,6 @@
 package com.sh.stt.testCase.kdtsjf;
 
 import com.sh.stt.base.BaseDriver;
-import com.sh.stt.business.HeadFooterPagePro;
 import com.sh.stt.business.KDTSJFPagePro;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;

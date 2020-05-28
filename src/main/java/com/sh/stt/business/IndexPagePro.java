@@ -2,7 +2,6 @@ package com.sh.stt.business;
 
 import com.sh.stt.base.BaseDriver;
 import com.sh.stt.page.IndexPage;
-import com.sh.stt.page.IndexPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -327,33 +326,12 @@ public class IndexPagePro {
             for (WebElement element:listElement) {
                 //判断元素是否显示--解决页面style="display: none;"
                 if(element.isDisplayed() == true){
-                    listString.add(element.getAttribute("wtcode"));
+                    listString.add(element.getText());
                 }
             }
         }
         return listString;
     }
-
-    /**
-     * 获取所有智能硬件的List集合
-     */
-    public static List<String> intelHardList(WebDriver driver){
-        List<String> listString = new ArrayList<String>();
-        //判断元素是否存在
-        if (BaseDriver.isElementExist(driver, IndexPage.intelHardListEle, 2)){
-            //获取所有列表
-            List<WebElement> listElement = driver.findElements(IndexPage.intelHardListEle);
-            for (WebElement element:listElement) {
-                //判断元素是否显示--解决页面style="display: none;"
-                if(element.isDisplayed() == true){
-                    listString.add(element.getAttribute("wtcode"));
-                }
-            }
-        }
-        return listString;
-    }
-
-
 
     /**
      * 获取所有自定义楼层的List集合
@@ -375,63 +353,6 @@ public class IndexPagePro {
     }
 
     /**
-     * 获取所有特色专区的List集合
-     */
-    public static List<String> featureList(WebDriver driver){
-        List<String> listString = new ArrayList<String>();
-        //判断元素是否存在
-        if (BaseDriver.isElementExist(driver, IndexPage.featureEle, 2)){
-            //获取所有列表
-            List<WebElement> listElement = driver.findElements(IndexPage.featureEle);
-            for (WebElement element:listElement) {
-                //判断元素是否显示--解决页面style="display: none;"
-                if(element.isDisplayed() == true){
-                    listString.add(element.getText());
-                }
-            }
-        }
-        return listString;
-    }
-
-    /**
-     * 获取所有公告的List集合
-     */
-    public static List<String> noticeList(WebDriver driver){
-        List<String> listString = new ArrayList<String>();
-        //判断元素是否存在
-        if (BaseDriver.isElementExist(driver, IndexPage.noticeEle, 2)){
-            //获取所有列表
-            List<WebElement> listElement = driver.findElements(IndexPage.noticeEle);
-            for (WebElement element:listElement) {
-                //判断元素是否显示--解决页面style="display: none;"
-                if(element.isDisplayed() == true){
-                    listString.add(element.getAttribute("title"));
-                }
-            }
-        }
-        return listString;
-    }
-
-    /**
-     * 获取所有国资动态的List集合
-     */
-    public static List<String> gzdtList(WebDriver driver){
-        List<String> listString = new ArrayList<String>();
-        //判断元素是否存在
-        if (BaseDriver.isElementExist(driver, IndexPage.gzdtEle, 2)){
-            //获取所有列表
-            List<WebElement> listElement = driver.findElements(IndexPage.gzdtEle);
-            for (WebElement element:listElement) {
-                //判断元素是否显示--解决页面style="display: none;"
-                if(element.isDisplayed() == true){
-                    listString.add(element.getAttribute("title"));
-                }
-            }
-        }
-        return listString;
-    }
-
-    /**
      * 获取所有底部链接区的List集合
      */
     public static List<String> bottomList(WebDriver driver){
@@ -440,6 +361,25 @@ public class IndexPagePro {
         if (BaseDriver.isElementExist(driver, IndexPage.bottomEle, 2)){
             //获取所有列表
             List<WebElement> listElement = driver.findElements(IndexPage.bottomEle);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有右侧在线客服的List集合
+     */
+    public static List<String> onlineServiceList(WebDriver driver){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (BaseDriver.isElementExist(driver, IndexPage.onlineServiceList, 2)){
+            //获取所有列表
+            List<WebElement> listElement = driver.findElements(IndexPage.onlineServiceList);
             for (WebElement element:listElement) {
                 //判断元素是否显示--解决页面style="display: none;"
                 if(element.isDisplayed() == true){

@@ -250,7 +250,6 @@ public class GDIndex extends BaseDriver {
         }
     }
 
-
     /**
      * 3F 手机专区-内容区
      */
@@ -264,80 +263,7 @@ public class GDIndex extends BaseDriver {
             int count = Collections.frequency(listString, listString.get(i)); //统计链接多少个
             System.out.println("外链统计：" + count + "个");
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[@wtcode='"+listString.get(i)+"']")));
-            getWindowsHandle();
-        }
-    }
-
-    /**
-     * 4F 智能硬件-内容区
-     */
-    @Story("4F 智能硬件-内容区")
-    @Test
-    public void intelHardListTest() {
-        windowsHandle = driver.getWindowHandle(); //获取当前handle
-        //获取所有wtcode的List集合
-        List<String> listString = IndexPagePro.intelHardList(driver);
-        for (int i = 0; i < listString.size() ; i++) {
-            int count = Collections.frequency(listString, listString.get(i)); //统计链接多少个
-            System.out.println("外链统计：" + count + "个");
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[@wtcode='"+listString.get(i)+"']")));
-            getWindowsHandle();
-        }
-    }
-
-    /**
-     * 特色专区
-     */
-    @Story("特色专区")
-    @Test
-    public void featureListTest(){
-        windowsHandle = driver.getWindowHandle(); //获取当前handle
-        //获取所有text的List集合
-        List<String> listString = IndexPagePro.featureList(driver);
-        for (int i = 0; i < listString.size() ; i++) {
-            int count = Collections.frequency(listString, listString.get(i)); //统计链接多少个
-            System.out.println("外链统计：" + count + "个");
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[contains(text(),'"+listString.get(i)+"')]")));
-            getWindowsHandle();
-        }
-    }
-
-    /**
-     * 公告
-     */
-    @Story("公告")
-    @Test
-    public void noticeListTest(){
-        windowsHandle = driver.getWindowHandle(); //获取当前handle
-        //获取所有title的List集合
-        List<String> listString = IndexPagePro.noticeList(driver);
-        for (int i = 0; i < listString.size() ; i++) {
-            int count = Collections.frequency(listString, listString.get(i)); //统计链接多少个
-            System.out.println("外链统计：" + count + "个");
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[@title='"+listString.get(i)+"']")));
-            getWindowsHandle();
-        }
-    }
-
-    /**
-     * 国资动态
-     */
-    @Story("国资动态")
-    @Test
-    public void gzdtListTest(){
-        windowsHandle = driver.getWindowHandle(); //获取当前handle
-        //获取所有title的List集合
-        List<String> listString = IndexPagePro.gzdtList(driver);
-        for (int i = 0; i < listString.size() ; i++) {
-            int count = Collections.frequency(listString, listString.get(i)); //统计链接多少个
-            System.out.println("外链统计：" + count + "个");
-            // 点击title为指定值的元素
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[@title='"+listString.get(i)+"']")));
+            js.executeScript("arguments[0].click();",driver.findElement(By.xpath("//*[contains(text(),'"+listString.get(i)+"')]")));
             getWindowsHandle();
         }
     }
@@ -355,6 +281,24 @@ public class GDIndex extends BaseDriver {
             int count = Collections.frequency(listString, listString.get(i)); //统计链接多少个
             System.out.println("外链统计：" + count + "个");
             // 点击底部wtcode为指定值的元素
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[@wtcode='"+listString.get(i)+"']")));
+            getWindowsHandle();
+        }
+    }
+
+    /**
+     * 右侧在线客服
+     */
+    @Story("右侧在线客服")
+    @Test
+    public void onlineServiceListTest() {
+        windowsHandle = driver.getWindowHandle(); //获取当前handle
+        //获取所有wtcode的List集合
+        List<String> listString = IndexPagePro.onlineServiceList(driver);
+        for (int i = 0; i < listString.size() ; i++) {
+            int count = Collections.frequency(listString, listString.get(i)); //统计链接多少个
+            System.out.println("外链统计：" + count + "个");
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[@wtcode='"+listString.get(i)+"']")));
             getWindowsHandle();
