@@ -101,7 +101,11 @@ public class BaseDriver {
             Assertion.verifyFalse(driver.getPageSource().contains("很抱歉，您访问的页面穿越了"), "页面中含有'很抱歉，您访问的页面穿越了'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
             Assertion.verifyFalse(driver.getPageSource().contains("程序员"), "页面中含有'程序员'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
             Assertion.verifyFalse(driver.getPageSource().contains("Sorry, File not Found"), "页面中含有'Sorry, File not Found'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
+            Assertion.verifyFalse(driver.getPageSource().contains("输入参数中包含异常信息"), "页面中含有'输入参数中包含异常信息'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
+            Assertion.verifyFalse(driver.getPageSource().contains("您现在访问的页面暂时无法 打开"), "页面中含有'您现在访问的页面暂时无法 打开'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
+            Assertion.verifyFalse(driver.getPageSource().contains("搜索关注“任我看助手”微信公众号，找找其他特惠产品吧"), "页面中含有'搜索关注“任我看助手”微信公众号，找找其他特惠产品吧'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
 
+            Assertion.verifyNotEquals(driver.getTitle(), "活动结束啦", "标题带有'活动结束啦'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
             Assertion.verifyNotEquals(driver.getTitle(), "403 Forbidden", "标题带有'403 Forbidden'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
             Assertion.verifyNotEquals(driver.getTitle(), "地址或业务已下线", "标题带有'地址或业务已下线'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
             Assertion.verifyNotEquals(driver.getTitle(), "ERROR", "标题带有'ERROR'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
@@ -229,7 +233,11 @@ public class BaseDriver {
         Assertion.verifyFalse(driver.getPageSource().contains("很抱歉，您访问的页面穿越了"), "页面中含有'很抱歉，您访问的页面穿越了'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
         Assertion.verifyFalse(driver.getPageSource().contains("程序员"), "页面中含有'程序员'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
         Assertion.verifyFalse(driver.getPageSource().contains("Sorry, File not Found"), "页面中含有'Sorry, File not Found'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
+        Assertion.verifyFalse(driver.getPageSource().contains("输入参数中包含异常信息"), "页面中含有'输入参数中包含异常信息'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
+        Assertion.verifyFalse(driver.getPageSource().contains("您现在访问的页面暂时无法 打开"), "页面中含有'您现在访问的页面暂时无法 打开'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
+        Assertion.verifyFalse(driver.getPageSource().contains("搜索关注“任我看助手”微信公众号，找找其他特惠产品吧"), "页面中含有'搜索关注“任我看助手”微信公众号，找找其他特惠产品吧'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
 
+        Assertion.verifyNotEquals(driver.getTitle(), "活动结束啦", "标题带有'活动结束啦'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
         Assertion.verifyNotEquals(driver.getTitle(), "403 Forbidden", "标题带有'403 Forbidden'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
         Assertion.verifyNotEquals(driver.getTitle(), "地址或业务已下线", "标题带有'地址或业务已下线'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
         Assertion.verifyNotEquals(driver.getTitle(), "ERROR", "标题带有'ERROR'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
