@@ -357,30 +357,40 @@ public class IndexCommon extends BaseDriver {
     public void footerBottomTest(){
         windowsHandle = driver.getWindowHandle(); //获取当前handle
         //打击传销
-        WebElement DJCXEle = driver.findElement(IndexCommonPage.DJCXButton);
-        ScrollBarUtil.scrolltoPresence(driver, DJCXEle);
-        DJCXEle.click();
-        back();
+        if (BaseDriver.isElementExist(driver, IndexCommonPage.DJCXButton, 2)) {
+            WebElement DJCXEle = driver.findElement(IndexCommonPage.DJCXButton);
+            ScrollBarUtil.scrolltoPresence(driver, DJCXEle);
+            DJCXEle.click();
+            back();
+        }
         //营业厅
-        WebElement YYTEle = driver.findElement(IndexCommonPage.YYTButton);
-        ScrollBarUtil.scrolltoPresence(driver, YYTEle);
-        YYTEle.click();
-        back();
+        if (BaseDriver.isElementExist(driver, IndexCommonPage.YYTButton, 2)) {
+            WebElement YYTEle = driver.findElement(IndexCommonPage.YYTButton);
+            ScrollBarUtil.scrolltoPresence(driver, YYTEle);
+            YYTEle.click();
+            back();
+        }
         //中国移动客户端下载
-        WebElement APPEle = driver.findElement(IndexCommonPage.APPButton);
-        ScrollBarUtil.scrolltoPresence(driver, APPEle);
-        APPEle.click();
-        back();
+        if (BaseDriver.isElementExist(driver, IndexCommonPage.APPButton, 2)) {
+            WebElement APPEle = driver.findElement(IndexCommonPage.APPButton);
+            ScrollBarUtil.scrolltoPresence(driver, APPEle);
+            APPEle.click();
+            back();
+        }
         //可信网站
-        WebElement KXWZEle = driver.findElement(IndexCommonPage.KXWZButton);
-        ScrollBarUtil.scrolltoPresence(driver, KXWZEle);
-        KXWZEle.click();
-        getWindowsHandle();
+        if (BaseDriver.isElementExist(driver, IndexCommonPage.KXWZButton, 2)) {
+            WebElement KXWZEle = driver.findElement(IndexCommonPage.KXWZButton);
+            ScrollBarUtil.scrolltoPresence(driver, KXWZEle);
+            KXWZEle.click();
+            getWindowsHandle();
+        }
         //京ICP备05002571号
-        WebElement govEle = driver.findElement(IndexCommonPage.govButton);
-        ScrollBarUtil.scrolltoPresence(driver, govEle);
-        govEle.click();
-        back();
+        if (BaseDriver.isElementExist(driver, IndexCommonPage.govButton, 2)) {
+            WebElement govEle = driver.findElement(IndexCommonPage.govButton);
+            ScrollBarUtil.scrolltoPresence(driver, govEle);
+            govEle.click();
+            back();
+        }
     }
 
 }
