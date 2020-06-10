@@ -3,54 +3,96 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.sh.stt</groupId>
     <artifactId>www-selenium</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>WebUI Test Web App</name>
+
+    <!-- 属性配置 -->
     <properties>
-        <!--AspectJ是一个基于Java语言的AOP框架-->
-        <aspectj.version>1.9.5</aspectj.version>
-        <!-- 解决mvn编译乱码问题-->
+        <!-- 指定编码方式和 JDK8 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        <!-- 依赖版本信息 -->
+        <selenium-version>3.141.59</selenium-version>
+        <testng-version>6.14.3</testng-version>
+        <lombok-version>1.18.4</lombok-version>
+        <slf4j-version>1.7.25</slf4j-version>
+        <log4j-version>2.11.1</log4j-version>
+        <junit-version>4.12</junit-version>
+        <allure-version>2.13.3</allure-version>
+        <allure-testng-adaptor>1.3.6</allure-testng-adaptor>
+        <htmlunit-version>2.30</htmlunit-version>
+        <commons-pool2-version>2.6.1</commons-pool2-version>
+        <poi-version>4.1.0</poi-version>
+        <!-- AspectJ是一个基于Java语言的AOP框架 -->
+        <aspectj.version>1.9.5</aspectj.version>
     </properties>
 
+    <!-- 依赖配置 -->
     <dependencies>
-        <!--selenium-->
+        <!-- selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.14.0</version>
+            <version>${selenium-version}</version>
         </dependency>
-        <!--testng-->
+        <!-- testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.9.9</version>
+            <version>${testng-version}</version>
         </dependency>
-        <!--junit-->
+        <!-- lombok -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-            <scope>compile</scope>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok-version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-version}</version>
         </dependency>
         <!-- log4j -->
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j-version}</version>
+        </dependency>
+        <!-- junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit-version}</version>
+            <scope>test</scope>
         </dependency>
         <!--allure-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.13.3</version>
+            <version>${allure-version}</version>
         </dependency>
         <!--allure的testng插件-->
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
             <artifactId>allure-testng-adaptor</artifactId>
-            <version>1.3.6</version>
+            <version>${allure-testng-adaptor}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.testng</groupId>
@@ -58,16 +100,42 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- htmlunit -->
+        <!-- 一个页面分析工具，提供了界面上各种操作的 API -->
+        <dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+            <version>${htmlunit-version}</version>
+        </dependency>
+        <!-- commons-pool2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons-pool2-version}</version>
+        </dependency>
+        <!-- poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi-version}</version>
+        </dependency>
     </dependencies>
 
+    <!-- 构建配置 -->
     <build>
         <plugins>
-            <!--编译插件-->
+            <!-- 添加编译插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.8.1</version>
                 <configuration>
+                    <!-- 使用jdk 1.8的版本来编译 -->
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
@@ -77,7 +145,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>2.22.2</version>
                 <configuration>
                     <!--出现测试异常是否继续向下执行，此选项必备，防止异常测试结果导致执行中断-->
                     <testFailureIgnore>true</testFailureIgnore>
@@ -86,7 +154,8 @@
                     </argLine>
                     <suiteXmlFiles>
                         <!--此处testng.xml即为要运行的testng.xml文件-->
-                        <suiteXmlFile>./testNG.xml</suiteXmlFile>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>${xml.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <!--生成allure-result的目录-->
                     <systemProperties>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="WebUI Test Suite" parallel="tests" thread-count="1">
+
+    <!-- 配置文件 -->
+    <parameter name="propertiesPath" value="src/test/resources/config/config.properties"/>
+
+    <!-- 项目传参 -->
+    <!-- 终端选择 pc 端 -->
+    <parameter name="terminal" value="pc"/>
+    <parameter name="browserName" value="chrome"/>
+
+    <!--&lt;!&ndash; 终端选择 h5 端 &ndash;&gt;-->
+    <!--    <parameter name="terminal" value="h5"/>-->
+    <!--    <parameter name="browserName" value="chrome"/>-->
+    <!--    <parameter name="deviceName" value="Nexus 5"/>-->
+
+    <!-- 测试套件 -->
+    <suite-files>
+        <!-- www -->
+        <suite-file path="www_testng.xml"/>
+    </suite-files>
+
+    <!-- 监听器 -->
+    <listeners>
+        <!-- 断言监听器 -->
+        <listener class-name="com.sh.stt.listener.AssertListener"/>
+        <!-- 测试日志监听器 -->
+        <listener class-name="com.sh.stt.listener.LogListener"/>
+    </listeners>
+
+</suite>

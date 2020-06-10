@@ -1,0 +1,2198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="门户自动化测试">
+    <test preserve-order="true" name="www-selenium">
+        <classes>
+
+            <!-- 门户首页 -->
+            <class name="com.sh.stt.testcase.common.IndexCommonTest">
+                <methods>
+                    <include name="headListTest"/>
+                    <include name="searchKeyWordTest"/>
+                    <include name="searchHotListTest"/>
+                    <include name="intelHardListTest"/>
+                    <include name="miguBannerTest"/>
+                    <include name="miguAlbumTest"/>
+                    <include name="miguHotWordTest"/>
+                    <include name="featureListTest"/>
+                    <include name="noticeListTest"/>
+                    <include name="gzdtListTest"/>
+                    <include name="footerTargetListTest"/>
+                    <include name="footerNotTargetListTest"/>
+                    <include name="footerBottomTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.BJIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.AHIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.CQIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.FJIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.GDIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.GXIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.GSIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.GZIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.HEIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="customListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.HAIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.HIIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+
+            <class name="com.sh.stt.testcase.index.HBIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.HNIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.HLIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.JLIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.JSIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.JXIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.LNIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="customListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.NMIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.NXIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.QHIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.SHIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.SCIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.SDIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.SXIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.SNIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.TJIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.XJIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.XZIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.YNIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.index.ZJIndexTest">
+                <methods>
+                    <include name="advCarListTest"/>
+                    <include name="quickListTest"/>
+                    <include name="businessDtddTest"/>
+                    <include name="mobileDtddTest"/>
+                    <include name="packageDtddTest"/>
+                    <include name="familyBusDtddTest"/>
+                    <include name="intelHardDtddTest"/>
+                    <include name="queryServiceDtddTest"/>
+                    <include name="featureDtddTest"/>
+                    <include name="yhgundongListTest"/>
+                    <include name="eventsListTest"/>
+                    <include name="operateListTest"/>
+                    <include name="mobileListTest"/>
+                    <include name="bottomListTest"/>
+                    <include name="onlineServiceListTest"/>
+                </methods>
+            </class>
+
+            <!-- 服务中心首页 -->
+            <class name="com.sh.stt.testcase.common.SupportIndexCommonTest">
+                <methods>
+                    <include name="supportGouwuconListTest"/>
+                    <include name="supportScHelpListTest"/>
+                    <include name="supportSearchTest"/>
+                    <include name="supportFAQListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.BJSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.AHSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.CQSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.FJSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.GDSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.GXSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.GSSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.GZSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.HESupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.HASupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.HISupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.HBSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.HNSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.HLSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.JLSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.JSSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.JXSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.LNSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.NMSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.NXSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.QHSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.SHSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.SCSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.SDSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.SXSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.SNSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.TJSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.XJSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.XZSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.YNSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.index.ZJSupportIndexTest">
+                <methods>
+                    <include name="supportBannerListTest"/>
+                    <include name="supportQuickListTest"/>
+                    <include name="supportCusServiceListTest"/>
+                    <include name="supportSelfhelpListTest"/>
+                    <include name="supportServiceFeeListTest"/>
+                    <include name="supportTerUtiListTest"/>
+                    <include name="supportTsywconListTest"/>
+                </methods>
+            </class>
+
+            <!-- 服务中心实体营业厅 -->
+            <class name="com.sh.stt.testcase.support.entity.SupportEntityTest">
+                <methods>
+                    <include name="supportEntityListTest"/>
+                </methods>
+            </class>
+
+            <!-- 服务中心网上营业厅 -->
+            <class name="com.sh.stt.testcase.support.online.BJSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.AHSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.CQSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.FJSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.GDSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.GXSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.GSSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.GZSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.HESupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.HASupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.HISupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.HBSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.HNSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.HLSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.JLSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.JSSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.JXSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.LNSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.NMSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.NXSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.QHSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.SHSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.SCSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.SDSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.SXSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.SNSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.TJSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.XJSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.XZSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.YNSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.online.ZJSupportOnlineTest">
+                <methods>
+                    <include name="supportQueryHandleListTest"/>
+                    <include name="supportOnlineListTest"/>
+                </methods>
+            </class>
+
+            <!-- 服务中心优惠专区 -->
+            <class name="com.sh.stt.testcase.support.events.BJSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.AHSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.CQSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.FJSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.GDSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.GXSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.GSSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.GZSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.HESupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.HASupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.HISupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.HBSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.HNSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.HLSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.JLSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.JSSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.JXSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.LNSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.NMSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.NXSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.QHSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.SHSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.SCSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.SDSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.SXSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.SNSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.TJSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.XJSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.XZSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.YNSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.support.events.ZJSupportEventsTest">
+                <methods>
+                    <include name="supportEventsContentListTest"/>
+                </methods>
+            </class>
+
+            <!-- 服务中心产品 -->
+            <class name="com.sh.stt.testcase.support.serviceFee.SupportServiceProductTest">
+                <methods>
+                    <include name="supportServiceProductListTest"/>
+                </methods>
+            </class>
+
+            <!-- 服务中心客户端下载 -->
+            <class name="com.sh.stt.testcase.support.app.SupportAppTest">
+                <methods>
+                    <include name="supportAppListTest"/>
+                </methods>
+            </class>
+
+            <!-- 资费专区 -->
+            <class name="com.sh.stt.testcase.fee.BJFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.AHFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.CQFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.FJFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.GDFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.GXFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.GSFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.GZFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.HEFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.HAFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.HIFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.HBFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.HNFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.HLFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.JLFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.JSFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.JXFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.LNFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.NMFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.NXFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.QHFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.SHFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.SCFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.SDFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.SXFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.SNFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.TJFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.XJFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.XZFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.YNFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fee.ZJFeeTest">
+                <methods>
+                    <include name="feeContentListTest"/>
+                </methods>
+            </class>
+
+            <!-- 5G专区 -->
+            <class name="com.sh.stt.testcase.fiveG.BJFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.AHFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.CQFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.FJFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.GDFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.GXFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.GSFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.GZFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.HEFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.HAFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.HIFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.HBFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.HNFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.HLFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.JLFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.JSFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.JXFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.LNFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.NMFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.NXFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.QHFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.SHFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.SCFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.SDFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.SXFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.SNFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.TJFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.XJFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.XZFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.YNFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.fiveG.ZJFiveGTest">
+                <methods>
+                    <include name="quickContentListTest"/>
+                    <include name="packageContentListTest"/>
+                    <include name="phoneContentListTest"/>
+                    <include name="phoneCarouselContentListTest"/>
+                </methods>
+            </class>
+
+            <!-- 宽带提速降费 -->
+            <class name="com.sh.stt.testcase.kdtsjf.BJKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.AHKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.CQKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.FJKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.GDKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.GXKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.GSKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.GZKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.HEKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.HAKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.HIKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.HBKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.HNKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.HLKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.JLKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.JSKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.JXKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.LNKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.NMKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.NXKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.QHKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.SHKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.SCKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.SDKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.SXKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.SNKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.TJKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.XJKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.XZKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.YNKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdtsjf.ZJKdtsjfTest">
+                <methods>
+                    <include name="broadbandNewClothesListTest"/>
+                    <include name="broadbandUpgradeListTest"/>
+                </methods>
+            </class>
+
+            <!-- 宽带专区 -->
+            <class name="com.sh.stt.testcase.kdzq.BJKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.AHKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.CQKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.FJKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.GDKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.GXKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.GSKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.GZKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.HEKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.HAKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.HIKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.HBKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.HNKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.HLKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.JLKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.JSKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.JXKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.LNKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.NMKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.NXKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.QHKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.SHKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.SCKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.SDKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.SXKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.SNKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.TJKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.XJKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.XZKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.YNKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.kdzq.ZJKdzqTest">
+                <methods>
+                    <include name="broadbandProductTest"/>
+                    <include name="broadbandServiceTest"/>
+                    <include name="broadbandProductListTest"/>
+                </methods>
+            </class>
+
+            <!-- 关于中国移动公开目录 -->
+            <class name="com.sh.stt.testcase.aboutus.gkml.JDSJTest">
+                <methods>
+                    <include name="jdsjListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.aboutus.gkml.BNBTest">
+                <methods>
+                    <include name="bnbListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.aboutus.gkml.NBTest">
+                <methods>
+                    <include name="nbListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.aboutus.gkml.EquipmentMaterialTest">
+                <methods>
+                    <include name="equipmentMaterialListTest"/>
+                </methods>
+            </class>
+
+            <!-- 慈善基金会 -->
+            <class name="com.sh.stt.testcase.cishan.CiShanTest">
+                <methods>
+                    <include name="headNavListTest"/>
+                    <include name="csLinkListTest"/>
+                </methods>
+            </class>
+
+            <!-- 网站信息 -->
+            <class name="com.sh.stt.testcase.webNotice.ContactTest">
+                <methods>
+                    <include name="contactListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.webNotice.LinksTest">
+                <methods>
+                    <include name="linksListTest"/>
+                </methods>
+            </class>
+            <class name="com.sh.stt.testcase.webNotice.NavitationTest">
+                <methods>
+                    <include name="navigationListTest"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

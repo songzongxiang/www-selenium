@@ -1,28 +1,101 @@
 package com.sh.stt.page;
 
-import org.openqa.selenium.By;
+import com.sh.stt.common.PageCommon;
+import com.sh.stt.locator.FiveGLocator;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 5G页面元素
+ * 5G专区 页面对象
  */
-public class FiveGPage {
+public class FiveGPage extends PageCommon {
 
     /**
-     * 快捷入口
+     * 构造器
+     *
+     * @param driver 驱动
      */
-    public static By quickEle = By.xpath("//div[@class='entry']/a");
+    public FiveGPage(WebDriver driver) {
+        super(driver);
+    }
 
     /**
-     * 5G套餐
+     * 获取所有快捷入口内容的List集合
      */
-    public static By packageEle = By.xpath(".//*[@id='5G_TC']/div/div/div/ul/li/dl/a/dd/span");
+    public List<String> quickContentList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(FiveGLocator.FIVEG_QUICK_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(FiveGLocator.FIVEG_QUICK_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("href"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 5G终端
+     * 获取所有5G套餐内容的List集合
      */
-    //终端内容
-    public static By phoneContentEle = By.xpath(".//*[@id='5G_HOME_Client']/div[1]/dl/a");
-    //轮播内容
-    public static By phoneCarouselContentEle = By.xpath(".//*[@id='5G_HOME_Client']/div[2]/div/div[2]/div/ul/li/dl/a");
+    public List<String> packageContentList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(FiveGLocator.FIVEG_PACKAGE_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(FiveGLocator.FIVEG_PACKAGE_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getText());
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有5G终端内容的List集合
+     */
+    public List<String> phoneContentList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(FiveGLocator.FIVEG_PHONE_CONTENT_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(FiveGLocator.FIVEG_PHONE_CONTENT_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("href"));
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有5G终端--轮播内容的List集合
+     */
+    public List<String> phoneCarouselContentList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(FiveGLocator.FIVEG_CAROUSEL_CONTENT_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(FiveGLocator.FIVEG_CAROUSEL_CONTENT_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("href"));
+                }
+            }
+        }
+        return listString;
+    }
 
 }

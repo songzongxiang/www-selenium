@@ -1,29 +1,82 @@
 package com.sh.stt.page;
 
-import org.openqa.selenium.By;
+import com.sh.stt.common.PageCommon;
+import com.sh.stt.locator.KDZQLocator;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 宽带专区
+ * 页宽带专区 面对象
  */
-public class KDZQPage {
+public class KDZQPage extends PageCommon {
 
     /**
-     * 优质产品
+     * 构造器
+     *
+     * @param driver 驱动
      */
-    public static By broadbandProduct = By.xpath(".//*[@id='main']/div[6]/a");
+    public KDZQPage(WebDriver driver) {
+        super(driver);
+    }
 
     /**
-     * 优质产品更多
+     * 获取所有宽带专区--优质产品的List集合
      */
-    public static By broadbandProductMore = By.id("yzcp_more");
+    public List<String> broadbandProduct(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(KDZQLocator.BROADBAND_PRODUCT, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(KDZQLocator.BROADBAND_PRODUCT);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 宽带产品列表
+     * 获取所有宽带专区--宽带产品列表的List集合
      */
-    public static By broadbandProductList = By.xpath(".//*[@id='pd_listshow']/div/a/div[@class='cp_bm']/p");
+    public List<String> broadbandProductList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (this.isElementExist(KDZQLocator.BROADBAND_PRODUCT_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(KDZQLocator.BROADBAND_PRODUCT_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("title"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 宽带服务
+     * 获取所有宽带专区--宽带服务的List集合
      */
-    public static By broadbandService = By.xpath(".//*[@id='main']/div/div/div/ul/li/a");
+    public List<String> broadbandService(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(KDZQLocator.BROADBAND_SERVICE, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(KDZQLocator.BROADBAND_SERVICE);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
 }

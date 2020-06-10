@@ -1,7 +1,6 @@
 package com.sh.stt.util;
 
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import java.util.ArrayList;
 import java.util.List;

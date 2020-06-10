@@ -1,348 +1,204 @@
 package com.sh.stt.base;
 
-import com.sh.stt.util.AssertListener;
-import com.sh.stt.util.Assertion;
-import org.openqa.selenium.By;
+import com.sh.stt.util.PropertiesReader;
+import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
-import java.util.Set;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-@Listeners({AssertListener.class})
+/**
+ * 驱动基类
+ */
+@Slf4j
 public class BaseDriver {
-    public WebDriver driver;
-    public String windowsHandle;
 
-    @BeforeClass
-    public void openBrowser(){
-        driver = SelectDriver.driverName("chrome");
+    /**
+     * 浏览器驱动
+     */
+    private WebDriver driver;
+
+    /**
+     * 浏览器名称
+     */
+    private String browserName;
+
+    /**
+     * 终端选择 pc 或者 h5
+     */
+    private String terminal;
+
+    /**
+     * 设备选择
+     */
+    private String deviceName;
+
+    /**
+     * chrome 驱动路径
+     */
+    private String chromeDriverPath;
+
+    /**
+     * firefox 驱动路径
+     */
+    private String firefoxDriverPath;
+
+    /**
+     * 隐式等待时长（s）
+     */
+    private long implicitlyWait;
+
+    /**
+     * 页面加载等待时长（s）
+     */
+    private long pageLoadTimeout;
+
+    /**
+     * 脚本等待时长（s）
+     */
+    private long setScriptTimeout;
+
+    /**
+     * 本地线程存储用来存驱动
+     */
+    public static ThreadLocal<WebDriver> threadLocal = new ThreadLocal<>();
+
+    /**
+     * 线程等待2000
+     */
+    public static final int THREE_THOUSANG = 2000;
+
+    /**
+     * 无参构造器
+     * 初始化多种驱动路径参数
+     * 初始化文件下载路径参数
+     * 初始化多项等待时长参数
+     */
+    public BaseDriver() {
+        /* 获取类加载的根路径 驱动的 test-classes 路径 */
+        String driverParentPath = this.getClass().getResource("/").getPath() + "driver" + File.separator;
+        /* 多种驱动文件路径配置参数 */
+        chromeDriverPath = driverParentPath + PropertiesReader.getKey("driver.chromeDriver");
+        firefoxDriverPath = driverParentPath + PropertiesReader.getKey("driver.firefoxDriver");
+        implicitlyWait = Long.valueOf(PropertiesReader.getKey("driver.timeouts.implicitlyWait"));
+        pageLoadTimeout = Long.valueOf(PropertiesReader.getKey("driver.timeouts.pageLoadTimeout"));
+        setScriptTimeout = Long.valueOf(PropertiesReader.getKey("driver.timeouts.setScriptTimeout"));
+    }
+
+    /**
+     * 启动本机中的浏览器
+     *
+     * @param browserName 浏览器名
+     * @param terminal    pc 或者 h5
+     * @param deviceName  设备名称
+     * @throws Exception 抛出浏览器启动失败的异常
+     */
+    public void startBrowser(String browserName, String terminal, String deviceName) throws Exception {
+        /* 驱动基本信息参数 */
+        this.browserName = browserName.toLowerCase();
+        /* 终端设备信息参数 */
+        this.terminal = terminal.toLowerCase();
+        this.deviceName = deviceName;
+        /* 选择驱动，启动浏览器 */
+        switch (browserName){
+            // 1.谷歌
+            case "chrome":
+                try {
+                    // 系统变量设置谷歌驱动
+                    System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    // 驱动可选项配置
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.setExperimentalOption("prefs", hashMap);
+                    chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addArguments("--disable-dev-shm-usage");
+                    // 如果是 h5 需要另外设置
+                    if (terminal.equals("h5")) {
+                        Map<String, String> mobileEmulationMap = new HashMap<>();
+                        mobileEmulationMap.put("deviceName", deviceName);
+                        chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulationMap);
+                    }
+                    // 启动 RemoteWebDriver
+                    driver = new ChromeDriver(chromeOptions);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    log.error(browserName + "浏览器启动失败！");
+                }
+                break;
+            // 2.火狐
+            case "firefox":
+                try {
+                    // 系统变量设置火狐驱动
+                    System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    // 驱动可选项配置
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.addArguments("--no-sandbox");
+                    firefoxOptions.addArguments("--disable-dev-shm-usage");
+                    // 启动 RemoteWebDriver
+                    driver = new FirefoxDriver(firefoxOptions);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    log.error(browserName + "浏览器启动失败！");
+                }
+                break;
+            // 都没匹配到则抛出异常
+            default:
+                throw new Exception("暂不支持的浏览器类型");
+        }
+        /* 驱动设置等待时长 */
+        // 隐式等待
+        driver.manage().timeouts().implicitlyWait(implicitlyWait, TimeUnit.SECONDS);
+        // 页面加载等待
+        driver.manage().timeouts().pageLoadTimeout(pageLoadTimeout, TimeUnit.SECONDS);
+        // 脚本等待
+        driver.manage().timeouts().setScriptTimeout(setScriptTimeout, TimeUnit.SECONDS);
+        /* 窗口最大化 */
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    }
-
-    @AfterClass
-    public void close(){
-        driver.quit();
-    }
-
-    /**
-     * actionMoveElement actions 鼠标悬停
-     */
-    public void action(WebElement element) {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).perform();
-    }
-
-    /**
-     * 判断元素是否存在
-     * @param driver
-     * @param locator
-     * @param timeoutSeconds
-     * 最多等待的时间,单位 ： 秒
-     * @return
-     */
-    public static boolean isElementExist(WebDriver driver, By locator, int timeoutSeconds) {
-        //隐式等待时间
-        driver.manage().timeouts().implicitlyWait(timeoutSeconds, TimeUnit.SECONDS);
-        try {
-            driver.findElement(locator);
-            return true;
-        } catch (Exception e) {
-            return false;
+        // 存进线程本地存储
+        threadLocal.set(driver);
+        log.info((terminal.equals("h5")) ? ("浏览器：" + browserName + " h5 成功启动！") : ("浏览器：" + browserName + " 成功启动！"));
         }
+
+    /**
+     * 取到浏览器驱动
+     *
+     * @return 浏览器驱动
+     */
+    public WebDriver getDriver(){
+        return driver;
     }
 
     /**
-     * 判断pageNum是不是数字
-     * @param pageNum
-     * @return
+     * 设置浏览器驱动
+     *
+     * @param driver 浏览器驱动
      */
-    public static boolean isNumber(String pageNum) {
-        // 把正则表达式编译成模式对象
-        Pattern p = Pattern.compile("[0-9]*");
-        // 通过模式对象得到匹配器对象，这个时候需要的是被匹配的字符串
-        Matcher m = p.matcher(pageNum);
-        // 调用匹配器对象的功能
-        if (m.matches()) {
-            return true;
+    public void setDriver(WebDriver driver){
+        this.driver = driver;
+        // 存进线程本地存储
+        threadLocal.set(driver);
+    }
+
+    /**
+     * 驱动结束并关闭浏览器
+     */
+    public void closeBrowser() throws InterruptedException {
+        // JS 显示弹出框表示测试结束
+        ((JavascriptExecutor) driver).executeScript("alert('测试完成，浏览器在2s后关闭！')");
+        Thread.sleep(THREE_THOUSANG);
+        if (driver != null){
+            driver.quit();
         }
-        return false;
-    }
-
-    /**
-     * 切换window窗口
-     */
-    public void getWindowsHandle(){
-        Set<String> handles = driver.getWindowHandles();
-        for (String handle:handles){
-            if (handle.equals(windowsHandle)){ //如果为 最先的窗口 权柄跳出
-                continue;
-            }
-            driver.switchTo().window(handle); //如果不为最先的窗口权柄，将新窗口的操作权柄给driver
-            System.out.println(driver.getTitle());
-            System.out.println(driver.getCurrentUrl());
-
-            Assertion.verifyFalse(driver.getCurrentUrl().contains("404"), "URL含有'404'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyFalse(driver.getTitle().contains("404"), "标题含有'404'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyFalse(driver.getTitle().contains("502"), "标题含有'502'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyFalse(driver.getTitle().contains("503"), "标题含有'503'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyFalse(driver.getTitle().contains("错误"), "标题含有'错误'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyFalse(driver.getPageSource().contains("商品已下架"), "页面中含有'商品已下架'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-            Assertion.verifyFalse(driver.getPageSource().contains("503 Service Unavailable"), "页面中含有'503 Service Unavailable'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-            Assertion.verifyFalse(driver.getPageSource().contains("系统繁忙，请稍后再试"), "页面中含有'系统繁忙，请稍后再试'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-            Assertion.verifyFalse(driver.getPageSource().contains("很抱歉，您访问的页面穿越了"), "页面中含有'很抱歉，您访问的页面穿越了'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-            Assertion.verifyFalse(driver.getPageSource().contains("程序员"), "页面中含有'程序员'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-            Assertion.verifyFalse(driver.getPageSource().contains("Sorry, File not Found"), "页面中含有'Sorry, File not Found'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-            Assertion.verifyFalse(driver.getPageSource().contains("输入参数中包含异常信息"), "页面中含有'输入参数中包含异常信息'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-            Assertion.verifyFalse(driver.getPageSource().contains("您现在访问的页面暂时无法 打开"), "页面中含有'您现在访问的页面暂时无法 打开'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-            Assertion.verifyFalse(driver.getPageSource().contains("搜索关注“任我看助手”微信公众号，找找其他特惠产品吧"), "页面中含有'搜索关注“任我看助手”微信公众号，找找其他特惠产品吧'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-
-            Assertion.verifyNotEquals(driver.getTitle(), "活动结束啦", "标题带有'活动结束啦'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "403 Forbidden", "标题带有'403 Forbidden'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "地址或业务已下线", "标题带有'地址或业务已下线'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "ERROR", "标题带有'ERROR'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "sjsj.10086.cn", "标题带有'sjsj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "sxt.10086.cn", "标题带有'sxt.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "zwy.12582.10086.cn", "标题带有'zwy.12582.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "12582.10086.cn", "标题带有'12582.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "12580.10086.cn", "标题带有'12580.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "read.10086.cn", "标题带有'read.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-
-            Assertion.verifyNotEquals(driver.getTitle(), "bj.10086.cn", "标题带有'bj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "ah.10086.cn", "标题带有'ah.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "cq.10086.cn", "标题带有'cq.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "fj.10086.cn", "标题带有'fj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "gd.10086.cn", "标题带有'gd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "gx.10086.cn", "标题带有'gx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "gs.10086.cn", "标题带有'gs.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "gz.10086.cn", "标题带有'gz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "he.10086.cn", "标题带有'he.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "ha.10086.cn", "标题带有'ha.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "hi.10086.cn", "标题带有'hi.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "hb.10086.cn", "标题带有'hb.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "hn.10086.cn", "标题带有'hn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "hl.10086.cn", "标题带有'hl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "jl.10086.cn", "标题带有'jl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "js.10086.cn", "标题带有'js.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "jx.10086.cn", "标题带有'jx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "ln.10086.cn", "标题带有'ln.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "nm.10086.cn", "标题带有'nm.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "nx.10086.cn", "标题带有'nx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "qh.10086.cn", "标题带有'qh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "sh.10086.cn", "标题带有'sh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "sc.10086.cn", "标题带有'sc.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "sd.10086.cn", "标题带有'sd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "sx.10086.cn", "标题带有'sx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "sn.10086.cn", "标题带有'sn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "tj.10086.cn", "标题带有'tj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "xj.10086.cn", "标题带有'xj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "xz.10086.cn", "标题带有'xz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "yn.10086.cn", "标题带有'yn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "zj.10086.cn", "标题带有'zj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.bj.10086.cn", "标题带有'service.bj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.ah.10086.cn", "标题带有'service.ah.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.cq.10086.cn", "标题带有'service.cq.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.fj.10086.cn", "标题带有'service.fj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.gd.10086.cn", "标题带有'service.gd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.gx.10086.cn", "标题带有'service.gx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.gs.10086.cn", "标题带有'service.gs.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.gz.10086.cn", "标题带有'service.gz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.he.10086.cn", "标题带有'service.he.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.ha.10086.cn", "标题带有'service.ha.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.hi.10086.cn", "标题带有'service.hi.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.hb.10086.cn", "标题带有'service.hb.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.hn.10086.cn", "标题带有'service.hn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.hl.10086.cn", "标题带有'service.hl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.jl.10086.cn", "标题带有'service.jl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.js.10086.cn", "标题带有'service.js.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.jx.10086.cn", "标题带有'service.jx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.ln.10086.cn", "标题带有'service.ln.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.nm.10086.cn", "标题带有'service.nm.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.nx.10086.cn", "标题带有'service.nx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.qh.10086.cn", "标题带有'service.qh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.sh.10086.cn", "标题带有'service.sh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.sc.10086.cn", "标题带有'service.sc.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.sd.10086.cn", "标题带有'service.sd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.sx.10086.cn", "标题带有'service.sx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.sn.10086.cn", "标题带有'service.sn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.tj.10086.cn", "标题带有'service.tj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.xj.10086.cn", "标题带有'service.xj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.xz.10086.cn", "标题带有'service.xz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.yn.10086.cn", "标题带有'service.yn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "service.zj.10086.cn", "标题带有'service.zj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.bj.10086.cn", "标题带有'www.bj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.ah.10086.cn", "标题带有'www.ah.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.cq.10086.cn", "标题带有'www.cq.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.fj.10086.cn", "标题带有'www.fj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.gd.10086.cn", "标题带有'www.gd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.gx.10086.cn", "标题带有'www.gx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.gs.10086.cn", "标题带有'www.gs.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.gz.10086.cn", "标题带有'www.gz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.he.10086.cn", "标题带有'www.he.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.ha.10086.cn", "标题带有'www.ha.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.hi.10086.cn", "标题带有'www.hi.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.hb.10086.cn", "标题带有'www.hb.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.hn.10086.cn", "标题带有'www.hn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.hl.10086.cn", "标题带有'www.hl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.jl.10086.cn", "标题带有'www.jl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.js.10086.cn", "标题带有'www.js.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.jx.10086.cn", "标题带有'www.jx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.ln.10086.cn", "标题带有'www.ln.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.nm.10086.cn", "标题带有'www.nm.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.nx.10086.cn", "标题带有'www.nx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.qh.10086.cn", "标题带有'www.qh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.sh.10086.cn", "标题带有'www.sh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.sc.10086.cn", "标题带有'www.sc.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.sd.10086.cn", "标题带有'www.sd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.sx.10086.cn", "标题带有'www.sx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.sn.10086.cn", "标题带有'www.sn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.tj.10086.cn", "标题带有'www.tj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.xj.10086.cn", "标题带有'www.xj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.xz.10086.cn", "标题带有'www.xz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.yn.10086.cn", "标题带有'www.yn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-            Assertion.verifyNotEquals(driver.getTitle(), "www.zj.10086.cn", "标题带有'www.zj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-
-            driver.close(); //关闭新弹出的浏览器窗口
-            driver.switchTo().window(windowsHandle); //回到原始的浏览器窗口
-        }
-    }
-
-    /**
-     * 返回
-     */
-    public void back() {
-        System.out.println(driver.getTitle());
-        System.out.println(driver.getCurrentUrl());
-
-        Assertion.verifyFalse(driver.getCurrentUrl().contains("404"), "URL含有'404'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyFalse(driver.getTitle().contains("404"), "标题含有'404'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyFalse(driver.getTitle().contains("502"), "标题含有'502'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyFalse(driver.getTitle().contains("503"), "标题含有'503'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyFalse(driver.getTitle().contains("错误"), "标题含有'错误'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyFalse(driver.getPageSource().contains("商品已下架"), "页面中含有'商品已下架'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-        Assertion.verifyFalse(driver.getPageSource().contains("503 Service Unavailable"), "页面中含有'503 Service Unavailable'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-        Assertion.verifyFalse(driver.getPageSource().contains("系统繁忙，请稍后再试"), "页面中含有'系统繁忙，请稍后再试'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-        Assertion.verifyFalse(driver.getPageSource().contains("很抱歉，您访问的页面穿越了"), "页面中含有'很抱歉，您访问的页面穿越了'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-        Assertion.verifyFalse(driver.getPageSource().contains("程序员"), "页面中含有'程序员'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-        Assertion.verifyFalse(driver.getPageSource().contains("Sorry, File not Found"), "页面中含有'Sorry, File not Found'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-        Assertion.verifyFalse(driver.getPageSource().contains("输入参数中包含异常信息"), "页面中含有'输入参数中包含异常信息'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-        Assertion.verifyFalse(driver.getPageSource().contains("您现在访问的页面暂时无法 打开"), "页面中含有'您现在访问的页面暂时无法 打开'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-        Assertion.verifyFalse(driver.getPageSource().contains("搜索关注“任我看助手”微信公众号，找找其他特惠产品吧"), "页面中含有'搜索关注“任我看助手”微信公众号，找找其他特惠产品吧'" + "，当前URL:"+driver.getCurrentUrl() + ",当前标题："+driver.getTitle());
-
-        Assertion.verifyNotEquals(driver.getTitle(), "活动结束啦", "标题带有'活动结束啦'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "403 Forbidden", "标题带有'403 Forbidden'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "地址或业务已下线", "标题带有'地址或业务已下线'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "ERROR", "标题带有'ERROR'" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "sjsj.10086.cn", "标题带有'sjsj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "sxt.10086.cn", "标题带有'sxt.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "zwy.12582.10086.cn", "标题带有'zwy.12582.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "12582.10086.cn", "标题带有'12582.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "12580.10086.cn", "标题带有'12580.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "read.10086.cn", "标题带有'read.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-
-        Assertion.verifyNotEquals(driver.getTitle(), "bj.10086.cn", "标题带有'bj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "ah.10086.cn", "标题带有'ah.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "cq.10086.cn", "标题带有'cq.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "fj.10086.cn", "标题带有'fj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "gd.10086.cn", "标题带有'gd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "gx.10086.cn", "标题带有'gx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "gs.10086.cn", "标题带有'gs.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "gz.10086.cn", "标题带有'gz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "he.10086.cn", "标题带有'he.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "ha.10086.cn", "标题带有'ha.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "hi.10086.cn", "标题带有'hi.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "hb.10086.cn", "标题带有'hb.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "hn.10086.cn", "标题带有'hn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "hl.10086.cn", "标题带有'hl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "jl.10086.cn", "标题带有'jl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "js.10086.cn", "标题带有'js.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "jx.10086.cn", "标题带有'jx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "ln.10086.cn", "标题带有'ln.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "nm.10086.cn", "标题带有'nm.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "nx.10086.cn", "标题带有'nx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "qh.10086.cn", "标题带有'qh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "sh.10086.cn", "标题带有'sh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "sc.10086.cn", "标题带有'sc.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "sd.10086.cn", "标题带有'sd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "sx.10086.cn", "标题带有'sx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "sn.10086.cn", "标题带有'sn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "tj.10086.cn", "标题带有'tj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "xj.10086.cn", "标题带有'xj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "xz.10086.cn", "标题带有'xz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "yn.10086.cn", "标题带有'yn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "zj.10086.cn", "标题带有'zj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题：" + driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.bj.10086.cn", "标题带有'service.bj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.ah.10086.cn", "标题带有'service.ah.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.cq.10086.cn", "标题带有'service.cq.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.fj.10086.cn", "标题带有'service.fj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.gd.10086.cn", "标题带有'service.gd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.gx.10086.cn", "标题带有'service.gx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.gs.10086.cn", "标题带有'service.gs.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.gz.10086.cn", "标题带有'service.gz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.he.10086.cn", "标题带有'service.he.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.ha.10086.cn", "标题带有'service.ha.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.hi.10086.cn", "标题带有'service.hi.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.hb.10086.cn", "标题带有'service.hb.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.hn.10086.cn", "标题带有'service.hn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.hl.10086.cn", "标题带有'service.hl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.jl.10086.cn", "标题带有'service.jl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.js.10086.cn", "标题带有'service.js.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.jx.10086.cn", "标题带有'service.jx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.ln.10086.cn", "标题带有'service.ln.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.nm.10086.cn", "标题带有'service.nm.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.nx.10086.cn", "标题带有'service.nx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.qh.10086.cn", "标题带有'service.qh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.sh.10086.cn", "标题带有'service.sh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.sc.10086.cn", "标题带有'service.sc.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.sd.10086.cn", "标题带有'service.sd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.sx.10086.cn", "标题带有'service.sx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.sn.10086.cn", "标题带有'service.sn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.tj.10086.cn", "标题带有'service.tj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.xj.10086.cn", "标题带有'service.xj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.xz.10086.cn", "标题带有'service.xz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.yn.10086.cn", "标题带有'service.yn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "service.zj.10086.cn", "标题带有'service.zj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.bj.10086.cn", "标题带有'www.bj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.ah.10086.cn", "标题带有'www.ah.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.cq.10086.cn", "标题带有'www.cq.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.fj.10086.cn", "标题带有'www.fj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.gd.10086.cn", "标题带有'www.gd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.gx.10086.cn", "标题带有'www.gx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.gs.10086.cn", "标题带有'www.gs.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.gz.10086.cn", "标题带有'www.gz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.he.10086.cn", "标题带有'www.he.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.ha.10086.cn", "标题带有'www.ha.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.hi.10086.cn", "标题带有'www.hi.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.hb.10086.cn", "标题带有'www.hb.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.hn.10086.cn", "标题带有'www.hn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.hl.10086.cn", "标题带有'www.hl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.jl.10086.cn", "标题带有'www.jl.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.js.10086.cn", "标题带有'www.js.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.jx.10086.cn", "标题带有'www.jx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.ln.10086.cn", "标题带有'www.ln.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.nm.10086.cn", "标题带有'www.nm.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.nx.10086.cn", "标题带有'www.nx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.qh.10086.cn", "标题带有'www.qh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.sh.10086.cn", "标题带有'www.sh.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.sc.10086.cn", "标题带有'www.sc.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.sd.10086.cn", "标题带有'www.sd.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.sx.10086.cn", "标题带有'www.sx.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.sn.10086.cn", "标题带有'www.sn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.tj.10086.cn", "标题带有'www.tj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.xj.10086.cn", "标题带有'www.xj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.xz.10086.cn", "标题带有'www.xz.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.yn.10086.cn", "标题带有'www.yn.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-        Assertion.verifyNotEquals(driver.getTitle(), "www.zj.10086.cn", "标题带有'www.zj.10086.cn'并且页面无法显示" + "，当前URL:" + driver.getCurrentUrl() + "，当前标题："+driver.getTitle());
-
-        driver.navigate().back();
+        log.info(browserName + "浏览器已成功关闭！");
     }
 
 }
+

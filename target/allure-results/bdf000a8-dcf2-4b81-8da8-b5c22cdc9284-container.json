@@ -1,0 +1,1 @@
+{"uuid":"bdf000a8-dcf2-4b81-8da8-b5c22cdc9284","name":"门户自动化测试","children":["2f2aadd6-ba0a-41e6-b3a1-e6bf905b8706"],"befores":[{"name":"beforeSuite","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1591167569696,"stop":1591167569719}],"afters":[],"links":[],"start":1591167569658,"stop":1591167581515}

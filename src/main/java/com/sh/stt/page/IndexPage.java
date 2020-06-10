@@ -1,90 +1,405 @@
 package com.sh.stt.page;
 
-import org.openqa.selenium.By;
+import com.sh.stt.common.PageCommon;
+import com.sh.stt.locator.IndexLocator;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 首页
+ * 门户首页 页面对象
  */
-public class IndexPage {
+public class IndexPage extends PageCommon {
 
     /**
-     * 主广告区--轮播图--不包含标题(每天答一答流量等你拿)
+     * 构造器
+     *
+     * @param driver 驱动
      */
-    public static By advCarList = By.xpath(".//*[@id='lbtframe']/div/a/img[not(contains(@title,'每天答一答流量等你拿'))]");
+    public IndexPage(WebDriver driver) {
+        super(driver);
+    }
 
     /**
-     * 快捷专区功能区--不包含(话费查询)
+     * 获取所有主广告区--轮播图的List集合
      */
-    public static By quickList = By.xpath(".//*[@id='iconsA']/ul/li/a/img[not(contains(@alt,'话费查询'))]");
+    public List<String> advCarList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.ADV_CAR_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(IndexLocator.ADV_CAR_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("title"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 左导航功能区
+     * 获取所有快捷专区功能区的List集合
      */
-    //左导航内容List
-    public static By navListEle = By.xpath(".//*[@id='list235']/li/a");
-    //办套餐dt内容List
-    public static By businessdtContent = By.xpath(".//*[@id='nav235']/div[1]/div/dl/dt/a");
-    //办套餐dd内容List
-    public static By businessddContent = By.xpath(".//*[@id='nav235']/div[1]/div/dl/dd/a");
-    //买手机dt内容List
-    public static By mobiledtContent = By.xpath(".//*[@id='nav235']/div[2]/div/dl/dt/a");
-    //买手机dd内容List
-    public static By mobileddContent = By.xpath(".//*[@id='nav235']/div[2]/div/dl/dd/a");
-    //套餐/靓号dt内容List
-    public static By packagedtContent = By.xpath(".//*[@id='nav235']/div[3]/div/dl/dt/a");
-    //套餐/靓号dd内容List
-    public static By packageddContent = By.xpath(".//*[@id='nav235']/div[3]/div/dl/dd/a");
-    //家庭业务dt内容List
-    public static By familyBusdtContent = By.xpath(".//*[@id='nav235']/div[4]/div/dl/dt/a");
-    //家庭业务dd内容List
-    public static By familyBusddContent = By.xpath(".//*[@id='nav235']/div[4]/div/dl/dd/a");
-    //智能硬件dt内容List
-    public static By intelHarddtContent = By.xpath(".//*[@id='nav235']/div[5]/div/dl/dt/a");
-    //智能硬件dd内容List
-    public static By intelHardddContent = By.xpath(".//*[@id='nav235']/div[5]/div/dl/dd/a");
-    //查询服务dt内容List
-    public static By queryServicedtContent = By.xpath(".//*[@id='nav235']/div[6]/div/dl/dt/a");
-    //查询服务dd内容List
-    public static By queryServiceddContent = By.xpath(".//*[@id='nav235']/div[6]/div/dl/dd/a");
-    //特色专区dt内容List
-    public static By featuredtContent = By.xpath(".//*[@id='nav235']/div[7]/div/dl/dt/a");
-    //特色专区dd内容List
-    public static By featureddContent = By.xpath(".//*[@id='nav235']/div[7]/div/dl/dd/a");
+    public List<String> quickList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.QUICK_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(IndexLocator.QUICK_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("alt"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 推荐营销位右侧轮播区
+     * 获取所有左导航--办业务dtdd的List集合
      */
-    public static By yhgundongList = By.xpath(".//*[@id='yhgundong2']/div/a");
+    public List<String> businessDddtList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.BUSINESS_DT_CONTENT_LIST, 2)){
+            //获取dt所有列表
+            List<WebElement> dtListElement = findElements(IndexLocator.BUSINESS_DT_CONTENT_LIST);
+            for (WebElement element:dtListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.BUSINESS_DD_CONTENT_LIST, 2)){
+            //获取dd所有列表
+            List<WebElement> ddListElement = findElements(IndexLocator.BUSINESS_DD_CONTENT_LIST);
+            for (WebElement element:ddListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 1F 享优惠
+     * 获取所有左导航--买手机dtdd的List集合
      */
-    public static By eventsListEle = By.xpath("//div[@id='louti1']/*/*/*/a");
+    public List<String> mobileDddtList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.MOBILE_DT_CONTENT_LIST, 2)){
+            //获取dt所有列表
+            List<WebElement> dtListElement = findElements(IndexLocator.MOBILE_DT_CONTENT_LIST);
+            for (WebElement element:dtListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.MOBILE_DD_CONTENT_LIST, 2)){
+            //获取dd所有列表
+            List<WebElement> ddListElement = findElements(IndexLocator.MOBILE_DD_CONTENT_LIST);
+            for (WebElement element:ddListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 2F 业务推荐
+     * 获取所有左导航--套餐/靓号dtdd的List集合
      */
-    public static By operateListEle = By.xpath("//div[@id='louti2']/*/*/*/a");
+    public List<String> packageDddtList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.PACKAGE_DT_CONTENT_LIST, 2)){
+            //获取dt所有列表
+            List<WebElement> dtListElement = findElements(IndexLocator.PACKAGE_DT_CONTENT_LIST);
+            for (WebElement element:dtListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.PACKAGE_DD_CONTENT_LIST, 2)){
+            //获取dd所有列表
+            List<WebElement> ddListElement = findElements(IndexLocator.PACKAGE_DD_CONTENT_LIST);
+            for (WebElement element:ddListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 3F 手机专区
+     * 获取所有左导航--家庭业务dtdd的List集合
      */
-    //内容区List
-    public static By mobileListEle = By.xpath("//div[@id='louti3']/*/*/div[@id='fl_3_4' or @id='fl_3_5']/a/p");
+    public List<String> familyServiceDddtList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.FAMILY_SERVICE_DT_CONTENT_LIST, 2)){
+            //获取dt所有列表
+            List<WebElement> dtListElement = findElements(IndexLocator.FAMILY_SERVICE_DT_CONTENT_LIST);
+            for (WebElement element:dtListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.FAMILY_SERVICE_DD_CONTENT_LIST, 2)){
+            //获取dd所有列表
+            List<WebElement> ddListElement = findElements(IndexLocator.FAMILY_SERVICE_DD_CONTENT_LIST);
+            for (WebElement element:ddListElement) {//判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 6F 自定义楼层
+     * 获取所有左导航--智能硬件dtdd的List集合
      */
-    //内容区List
-    public static By customListEle = By.xpath("//div[@id='louti7']/*/*/*/a");
+    public List<String> intelHardDddtList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.INTEL_HARD_DT_CONTENT_LIST, 2)){
+            //获取dt所有列表
+            List<WebElement> dtListElement = findElements(IndexLocator.INTEL_HARD_DT_CONTENT_LIST);
+            for (WebElement element:dtListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.INTEL_HARD_DD_CONTENT_LIST, 2)){
+            //获取dd所有列表
+            List<WebElement> ddListElement = findElements(IndexLocator.INTEL_HARD_DD_CONTENT_LIST);
+            for (WebElement element:ddListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 定位底部链接区按钮
+     * 获取所有左导航--查询服务dtdd的List集合
      */
-    public static By bottomEle = By.xpath(".//*[@id='bottom1200']/div/div/a");
+    public List<String> queryServiceDddtList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.QUERY_SERVICE_DT_CONTENT_LIST, 2)){
+            //获取dt所有列表
+            List<WebElement> dtListElement = findElements(IndexLocator.QUERY_SERVICE_DT_CONTENT_LIST);
+            for (WebElement element:dtListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.QUERY_SERVICE_DD_CONTENT_LIST, 2)){
+            //获取dd所有列表
+            List<WebElement> ddListElement = findElements(IndexLocator.QUERY_SERVICE_DD_CONTENT_LIST);
+            for (WebElement element:ddListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
 
     /**
-     * 右侧在线客服
+     * 获取所有左导航--特色专区dtdd的List集合
      */
-    public static By onlineServiceList = By.xpath(".//*[@id='topHead']/ul/li/a[starts-with(@class,'logo')]");
+    public List<String> featureDddtList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.FEATURE_DT_CONTENT_LIST, 2)){
+            //获取dt所有列表
+            List<WebElement> dtListElement = findElements(IndexLocator.FEATURE_DT_CONTENT_LIST);
+            for (WebElement element:dtListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.FEATURE_DD_CONTENT_LIST, 2)){
+            //获取dd所有列表
+            List<WebElement> ddListElement = findElements(IndexLocator.FEATURE_DD_CONTENT_LIST);
+            for (WebElement element:ddListElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有推荐营销位右侧轮播区的List集合
+     */
+    public List<String> yhgundongList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.YH_GUNDONG_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(IndexLocator.YH_GUNDONG_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有享优惠的List集合
+     */
+    public List<String> eventsList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.EVENTS_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(IndexLocator.EVENTS_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有业务推荐的List集合
+     */
+    public List<String> operateList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.OPERATE_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(IndexLocator.OPERATE_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有手机专区的List集合
+     */
+    public List<String> mobileList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.MOBILE_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(IndexLocator.MOBILE_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有自定义楼层的List集合
+     */
+    public List<String> customList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.CUSTOM_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(IndexLocator.CUSTOM_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有底部链接区的List集合
+     */
+    public List<String> bottomList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.BOTTOM_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(IndexLocator.BOTTOM_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
+    /**
+     * 获取所有右侧在线客服的List集合
+     */
+    public List<String> onlineServiceList(){
+        List<String> listString = new ArrayList<String>();
+        //判断元素是否存在
+        if (isElementExist(IndexLocator.ONLINE_SERVICE_LIST, 2)){
+            //获取所有列表
+            List<WebElement> listElement = findElements(IndexLocator.ONLINE_SERVICE_LIST);
+            for (WebElement element:listElement) {
+                //判断元素是否显示--解决页面style="display: none;"
+                if(element.isDisplayed() == true){
+                    listString.add(element.getAttribute("wtcode"));
+                }
+            }
+        }
+        return listString;
+    }
+
 }
