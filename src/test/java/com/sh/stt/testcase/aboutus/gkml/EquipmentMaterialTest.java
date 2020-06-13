@@ -11,7 +11,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Collections;
@@ -31,8 +31,8 @@ public class EquipmentMaterialTest extends BaseTest {
     //公开目录页面对象
     public GkmlPage gkmlPage;
 
-    @BeforeClass
-    public void beforeClass() {
+    @BeforeMethod
+    public void beforeMethod() {
         bp = new BasePage(driver);
         pc = new PageCommon(driver);
         gkmlPage = new GkmlPage(driver);

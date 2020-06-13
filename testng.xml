@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="WebUI Test Suite" parallel="tests" thread-count="1">
+<suite name="WebUI Test Suite" parallel="tests">
 
     <!-- 配置文件 -->
     <parameter name="propertiesPath" value="src/test/resources/config/config.properties"/>
@@ -10,7 +10,7 @@
     <parameter name="terminal" value="pc"/>
     <parameter name="browserName" value="chrome"/>
 
-    <!--&lt;!&ndash; 终端选择 h5 端 &ndash;&gt;-->
+    <!-- 终端选择 h5 端 -->
     <!--    <parameter name="terminal" value="h5"/>-->
     <!--    <parameter name="browserName" value="chrome"/>-->
     <!--    <parameter name="deviceName" value="Nexus 5"/>-->

@@ -8,7 +8,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Collections;
@@ -26,8 +26,8 @@ public class YNSupportOnlineTest extends BaseTest {
     //服务中心--客户服务--网上营业厅页面对象
     public SupportOnlinePage supportOnlinePage;
 
-    @BeforeClass
-    public void beforeClass() {
+    @BeforeMethod
+    public void beforeMethod() {
         bp = new BasePage(driver);
         supportOnlinePage = new SupportOnlinePage(driver);
         bp.currentHandle = driver.getWindowHandle(); //获取当前handle

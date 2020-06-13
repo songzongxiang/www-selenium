@@ -8,7 +8,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Collections;
@@ -26,8 +26,8 @@ public class CiShanTest extends BaseTest {
     //慈善基金会页面对象
     public CiShanPage ciShanPage;
 
-    @BeforeClass
-    public void beforeClass() {
+    @BeforeMethod
+    public void beforeMethod() {
         bp = new BasePage(driver);
         ciShanPage = new CiShanPage(driver);
         bp.currentHandle = driver.getWindowHandle(); //获取当前handle

@@ -45,16 +45,16 @@ public class BaseTest {
     }
 
     /**
-     * 执行一个测试用例之前执行
+     * 执行一个测试用例中的类方法之前执行
      *
      * @param browserName 浏览器名
      * @param terminal 终端选择 pc 或者 h5
      * @param deviceName 设备选择
      * @throws Exception 抛出浏览器没有启动成功异常
      */
-    @BeforeTest(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     @Parameters({"browserName", "terminal", "deviceName"})
-    public void beforeTest(@Optional("chrome") String browserName, @Optional("pc") String terminal, @Optional("desktop") String deviceName) throws Exception {
+    public void beforeClass(@Optional("chrome") String browserName, @Optional("pc") String terminal, @Optional("desktop") String deviceName) throws Exception {
         /* 驱动配置 */
         browserDriver = new BaseDriver();
         browserDriver.startBrowser(browserName, terminal, deviceName);
@@ -62,10 +62,10 @@ public class BaseTest {
     }
 
     /**
-     * 执行一个测试用例之后执行
+     * 执行一个测试用例中的类方法之后执行
      */
-    @AfterTest(alwaysRun = true)
-    public void afterTest() throws InterruptedException {
+    @AfterClass(alwaysRun = true)
+    public void afterClass() throws InterruptedException {
         // 驱动退出关闭浏览器
         browserDriver.closeBrowser();
     }

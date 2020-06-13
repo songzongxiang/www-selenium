@@ -1,25 +1,16 @@
-2020-06-10 00:36:32.955 [main-26] INFO  com.sh.stt.util.PropertiesReader.readProperties - 读取项目配置文件
-2020-06-10 00:36:32.986 [main-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
-2020-06-10 00:36:33.033 [main-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
-2020-06-10 00:36:44.471 [main-167] INFO  com.sh.stt.base.BaseDriver.startBrowser - 浏览器：chrome 成功启动！
-2020-06-10 00:36:46.276 [main-43] INFO  com.sh.stt.testcase.common.IndexCommonTest.beforeClass - 进入 门户首页 页面
-2020-06-10 00:36:46.303 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.common.IndexCommonTest.headListTest测试开始========
-2020-06-10 00:36:46.401 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.common.IndexCommonTest.headListTest测试开始========
-2020-06-10 00:36:46.402 [main-52] INFO  com.sh.stt.testcase.common.IndexCommonTest.headListTest - 页头
-2020-06-10 00:37:23.130 [main-44] INFO  com.sh.stt.listener.LogListener.onTestSuccess - ========com.sh.stt.testcase.common.IndexCommonTest.headListTest测试通过========
-2020-06-10 00:37:23.381 [main-44] INFO  com.sh.stt.listener.LogListener.onTestSuccess - ========com.sh.stt.testcase.common.IndexCommonTest.headListTest测试通过========
-2020-06-10 00:37:23.384 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.common.IndexCommonTest.searchKeyWordTest测试开始========
-2020-06-10 00:37:23.394 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.common.IndexCommonTest.searchKeyWordTest测试开始========
-2020-06-10 00:37:23.395 [main-69] INFO  com.sh.stt.testcase.common.IndexCommonTest.searchKeyWordTest - 搜索关键字
-2020-06-10 00:37:28.108 [main-44] INFO  com.sh.stt.listener.LogListener.onTestSuccess - ========com.sh.stt.testcase.common.IndexCommonTest.searchKeyWordTest测试通过========
-2020-06-10 00:37:28.133 [main-55] ERROR com.sh.stt.listener.LogListener.onTestFailure - ========com.sh.stt.testcase.common.IndexCommonTest.searchKeyWordTest测试失败,失败原因如下：
-java.lang.Throwable========
-2020-06-10 00:37:28.135 [main-32] INFO  com.sh.stt.util.ScreenshotUtil.capture - 开始截图
-2020-06-10 00:37:28.893 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.common.IndexCommonTest.searchHotListTest测试开始========
-2020-06-10 00:37:28.900 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.common.IndexCommonTest.searchHotListTest测试开始========
-2020-06-10 00:37:28.900 [main-92] INFO  com.sh.stt.testcase.common.IndexCommonTest.searchHotListTest - 搜索热词
-2020-06-10 00:38:19.243 [main-44] INFO  com.sh.stt.listener.LogListener.onTestSuccess - ========com.sh.stt.testcase.common.IndexCommonTest.searchHotListTest测试通过========
-2020-06-10 00:38:19.247 [main-44] INFO  com.sh.stt.listener.LogListener.onTestSuccess - ========com.sh.stt.testcase.common.IndexCommonTest.searchHotListTest测试通过========
-2020-06-10 00:38:19.248 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.common.IndexCommonTest.intelHardListTest测试开始========
-2020-06-10 00:38:19.255 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.common.IndexCommonTest.intelHardListTest测试开始========
-2020-06-10 00:38:19.256 [main-109] INFO  com.sh.stt.testcase.common.IndexCommonTest.intelHardListTest - 4F 智能硬件-内容区
+2020-06-12 14:53:51.376 [main-26] INFO  com.sh.stt.util.PropertiesReader.readProperties - 读取项目配置文件
+2020-06-12 14:53:51.393 [TestNG-tests-1-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
+2020-06-12 14:53:51.399 [TestNG-tests-1-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
+2020-06-12 14:54:01.980 [TestNG-tests-1-167] INFO  com.sh.stt.base.BaseDriver.startBrowser - 浏览器：chrome 成功启动！
+2020-06-12 14:54:02.904 [TestNG-tests-1-44] INFO  com.sh.stt.testcase.aboutus.gkml.EquipmentMaterialTest.beforeClass - 进入 关于中国移动--信息公开--公开目录--设备物资采购 页面
+2020-06-12 14:54:02.914 [TestNG-tests-1-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.aboutus.gkml.EquipmentMaterialTest.equipmentMaterialListTest测试开始========
+2020-06-12 14:54:02.986 [TestNG-tests-1-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.aboutus.gkml.EquipmentMaterialTest.equipmentMaterialListTest测试开始========
+2020-06-12 14:54:10.790 [TestNG-tests-1-44] INFO  com.sh.stt.listener.LogListener.onTestSuccess - ========com.sh.stt.testcase.aboutus.gkml.EquipmentMaterialTest.equipmentMaterialListTest测试通过========
+2020-06-12 14:54:10.897 [TestNG-tests-1-44] INFO  com.sh.stt.listener.LogListener.onTestSuccess - ========com.sh.stt.testcase.aboutus.gkml.EquipmentMaterialTest.equipmentMaterialListTest测试通过========
+2020-06-12 14:54:10.919 [TestNG-tests-1-68] INFO  com.sh.stt.listener.LogListener.onTestSkipped - ========com.sh.stt.testcase.cishan.CiShanTest.headNavListTest跳过测试========
+2020-06-12 14:54:10.923 [TestNG-tests-1-68] INFO  com.sh.stt.listener.LogListener.onTestSkipped - ========com.sh.stt.testcase.cishan.CiShanTest.headNavListTest跳过测试========
+2020-06-12 14:54:10.924 [TestNG-tests-1-68] INFO  com.sh.stt.listener.LogListener.onTestSkipped - ========com.sh.stt.testcase.cishan.CiShanTest.csLinkListTest跳过测试========
+2020-06-12 14:54:10.932 [TestNG-tests-1-68] INFO  com.sh.stt.listener.LogListener.onTestSkipped - ========com.sh.stt.testcase.cishan.CiShanTest.csLinkListTest跳过测试========
+2020-06-12 14:54:13.634 [TestNG-tests-1-200] INFO  com.sh.stt.base.BaseDriver.closeBrowser - chrome浏览器已成功关闭！
+2020-06-12 14:54:13.634 [TestNG-tests-1-79] INFO  com.sh.stt.listener.LogListener.onFinish - ====================www-selenium结束====================
+2020-06-12 14:54:13.662 [TestNG-tests-1-79] INFO  com.sh.stt.listener.LogListener.onFinish - ====================www-selenium结束====================

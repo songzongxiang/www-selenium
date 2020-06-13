@@ -10,7 +10,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Collections;
@@ -30,8 +30,8 @@ public class GSSupportEventsTest extends BaseTest {
     //服务中心--客户服务--优惠专区页面对象
     public SupportEventsPage supportEventsPage;
 
-    @BeforeClass
-    public void beforeClass() {
+    @BeforeMethod
+    public void beforeMethod() {
         bp = new BasePage(driver);
         pc = new PageCommon(driver);
         supportEventsPage = new SupportEventsPage(driver);

@@ -10,7 +10,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Collections;
@@ -30,8 +30,8 @@ public class SupportServiceProductTest extends BaseTest {
     //服务中心--业务资费--产品页面对象
     public SupportServiceProductPage supportServiceProductPage;
 
-    @BeforeClass
-    public void beforeClass() {
+    @BeforeMethod
+    public void beforeMethod() {
         bp = new BasePage(driver);
         pc = new PageCommon(driver);
         supportServiceProductPage = new SupportServiceProductPage(driver);

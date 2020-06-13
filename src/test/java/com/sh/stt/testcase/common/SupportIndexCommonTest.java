@@ -11,7 +11,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Collections;
@@ -32,8 +32,8 @@ public class SupportIndexCommonTest extends BaseTest {
     //服务中心首页页面对象
     public SupportIndexPage supportIndexPage;
 
-    @BeforeClass
-    public void beforeClass() {
+    @BeforeMethod
+    public void beforeMethod() {
         bp = new BasePage(driver);
         supportIndexPage = new SupportIndexPage(driver);
         bp.currentHandle = driver.getWindowHandle(); //获取当前handle

@@ -10,7 +10,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Collections;
@@ -30,8 +30,8 @@ public class QHKdzqTest extends BaseTest {
     //宽带提速降费页面对象
     public KDZQPage kdzqPage;
 
-    @BeforeClass
-    public void beforeClass() {
+    @BeforeMethod
+    public void beforeMethod() {
         bp = new BasePage(driver);
         pc = new PageCommon(driver);
         kdzqPage = new KDZQPage(driver);
