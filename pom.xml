@@ -6,7 +6,6 @@
     <groupId>org.sh.stt</groupId>
     <artifactId>www-selenium</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>WebUI Test Web App</name>
     <!--指定编译之后会生成war文件，不改就会默认是jar文件 -->
     <packaging>war</packaging>
@@ -156,8 +155,7 @@
                     </argLine>
                     <suiteXmlFiles>
                         <!--此处testng.xml即为要运行的testng.xml文件-->
-                        <!--suppress UnresolvedMavenProperty -->
-                        <suiteXmlFile>${xml.file}</suiteXmlFile>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <!--生成allure-result的目录-->
                     <systemProperties>
