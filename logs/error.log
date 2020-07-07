@@ -1,36 +1,21 @@
-2020-06-13 21:40:42.840 [main-26] INFO  com.sh.stt.util.PropertiesReader.readProperties - 读取项目配置文件
-2020-06-13 21:40:42.871 [TestNG-tests-1-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
-2020-06-13 21:40:42.871 [TestNG-tests-1-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
-2020-06-13 21:40:56.310 [TestNG-tests-1-167] INFO  com.sh.stt.base.BaseDriver.startBrowser - 浏览器：chrome 成功启动！
-2020-06-13 21:40:58.618 [TestNG-tests-1-37] INFO  com.sh.stt.testcase.index.HLIndexTest.beforeMethod - 进入 黑龙江门户首页 页面
-2020-06-13 21:40:58.867 [TestNG-tests-1-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.index.HLIndexTest.mobileListTest测试开始========
-2020-06-13 21:40:58.936 [TestNG-tests-1-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.index.HLIndexTest.mobileListTest测试开始========
-2020-06-13 21:40:58.936 [TestNG-tests-1-264] INFO  com.sh.stt.testcase.index.HLIndexTest.mobileListTest - 3F 手机专区
-2020-06-13 21:41:11.020 [TestNG-tests-1-55] ERROR com.sh.stt.listener.LogListener.onTestFailure - ========com.sh.stt.testcase.index.HLIndexTest.mobileListTest测试失败,失败原因如下：
+2020-07-07 10:52:55.883 [main-26] INFO  com.sh.stt.util.PropertiesReader.readProperties - 读取项目配置文件
+2020-07-07 10:52:55.910 [main-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
+2020-07-07 10:53:07.021 [main-167] INFO  com.sh.stt.base.BaseDriver.startBrowser - 浏览器：chrome 成功启动！
+2020-07-07 10:53:08.646 [main-40] INFO  com.sh.stt.testcase.fee.AHFeeTest.beforeMethod - 进入 安徽资费专区 页面
+2020-07-07 10:53:08.769 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.fee.AHFeeTest.feeContentListTest测试开始========
+2020-07-07 10:56:30.156 [main-55] ERROR com.sh.stt.listener.LogListener.onTestFailure - ========com.sh.stt.testcase.fee.AHFeeTest.feeContentListTest测试失败,失败原因如下：
 java.lang.Throwable========
-2020-06-13 21:41:11.023 [TestNG-tests-1-32] INFO  com.sh.stt.util.ScreenshotUtil.capture - 开始截图
-2020-06-13 21:41:11.773 [TestNG-tests-1-55] ERROR com.sh.stt.listener.LogListener.onTestFailure - ========com.sh.stt.testcase.index.HLIndexTest.mobileListTest测试失败,失败原因如下：
+2020-07-07 10:56:30.158 [main-32] INFO  com.sh.stt.util.ScreenshotUtil.capture - 开始截图
+2020-07-07 10:56:33.794 [main-200] INFO  com.sh.stt.base.BaseDriver.closeBrowser - chrome浏览器已成功关闭！
+2020-07-07 10:56:33.796 [main-79] INFO  com.sh.stt.listener.LogListener.onFinish - ====================www-selenium结束====================
+2020-07-07 15:56:24.703 [main-26] INFO  com.sh.stt.util.PropertiesReader.readProperties - 读取项目配置文件
+2020-07-07 15:56:24.723 [main-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
+2020-07-07 15:56:36.378 [main-164] INFO  com.sh.stt.base.BaseDriver.startBrowser - 浏览器：chrome 成功启动！
+2020-07-07 15:56:37.007 [main-40] INFO  com.sh.stt.testcase.kdzq.AHKdzqTest.beforeMethod - 进入 安徽宽带专区 页面
+2020-07-07 15:56:37.147 [main-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.kdzq.AHKdzqTest.broadbandProductTest测试开始========
+2020-07-07 15:56:37.193 [main-49] INFO  com.sh.stt.testcase.kdzq.AHKdzqTest.broadbandProductTest - 优质产品
+2020-07-07 15:56:46.532 [main-55] ERROR com.sh.stt.listener.LogListener.onTestFailure - ========com.sh.stt.testcase.kdzq.AHKdzqTest.broadbandProductTest测试失败,失败原因如下：
 java.lang.Throwable========
-2020-06-13 21:41:11.773 [TestNG-tests-1-32] INFO  com.sh.stt.util.ScreenshotUtil.capture - 开始截图
-2020-06-13 21:41:15.200 [TestNG-tests-1-200] INFO  com.sh.stt.base.BaseDriver.closeBrowser - chrome浏览器已成功关闭！
-2020-06-13 21:41:15.200 [TestNG-tests-1-79] INFO  com.sh.stt.listener.LogListener.onFinish - ====================www-selenium结束====================
-2020-06-13 21:41:15.215 [TestNG-tests-1-79] INFO  com.sh.stt.listener.LogListener.onFinish - ====================www-selenium结束====================
-2020-06-13 21:41:15.231 [main-53] INFO  com.sh.stt.listener.ExtentTestReporterListener.generateReport - 开始产生 extentreports 测试报告
-2020-06-13 21:42:35.372 [main-26] INFO  com.sh.stt.util.PropertiesReader.readProperties - 读取项目配置文件
-2020-06-13 21:42:35.388 [TestNG-tests-1-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
-2020-06-13 21:42:35.388 [TestNG-tests-1-22] INFO  com.sh.stt.listener.LogListener.onStart - ====================www-selenium开始====================
-2020-06-13 21:42:47.420 [TestNG-tests-1-167] INFO  com.sh.stt.base.BaseDriver.startBrowser - 浏览器：chrome 成功启动！
-2020-06-13 21:42:49.443 [TestNG-tests-1-37] INFO  com.sh.stt.testcase.index.HLIndexTest.beforeMethod - 进入 黑龙江门户首页 页面
-2020-06-13 21:42:49.570 [TestNG-tests-1-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.index.HLIndexTest.bottomListTest测试开始========
-2020-06-13 21:42:49.570 [TestNG-tests-1-33] INFO  com.sh.stt.listener.LogListener.onTestStart - ========com.sh.stt.testcase.index.HLIndexTest.bottomListTest测试开始========
-2020-06-13 21:42:49.611 [TestNG-tests-1-281] INFO  com.sh.stt.testcase.index.HLIndexTest.bottomListTest - 底部链接区
-2020-06-13 21:45:18.966 [TestNG-tests-1-55] ERROR com.sh.stt.listener.LogListener.onTestFailure - ========com.sh.stt.testcase.index.HLIndexTest.bottomListTest测试失败,失败原因如下：
-java.lang.Throwable========
-2020-06-13 21:45:18.970 [TestNG-tests-1-32] INFO  com.sh.stt.util.ScreenshotUtil.capture - 开始截图
-2020-06-13 21:45:19.624 [TestNG-tests-1-55] ERROR com.sh.stt.listener.LogListener.onTestFailure - ========com.sh.stt.testcase.index.HLIndexTest.bottomListTest测试失败,失败原因如下：
-java.lang.Throwable========
-2020-06-13 21:45:19.624 [TestNG-tests-1-32] INFO  com.sh.stt.util.ScreenshotUtil.capture - 开始截图
-2020-06-13 21:45:23.832 [TestNG-tests-1-200] INFO  com.sh.stt.base.BaseDriver.closeBrowser - chrome浏览器已成功关闭！
-2020-06-13 21:45:23.832 [TestNG-tests-1-79] INFO  com.sh.stt.listener.LogListener.onFinish - ====================www-selenium结束====================
-2020-06-13 21:45:23.832 [TestNG-tests-1-79] INFO  com.sh.stt.listener.LogListener.onFinish - ====================www-selenium结束====================
-2020-06-13 21:45:23.848 [main-53] INFO  com.sh.stt.listener.ExtentTestReporterListener.generateReport - 开始产生 extentreports 测试报告
+2020-07-07 15:56:46.534 [main-32] INFO  com.sh.stt.util.ScreenshotUtil.capture - 开始截图
+2020-07-07 15:56:50.104 [main-197] INFO  com.sh.stt.base.BaseDriver.closeBrowser - chrome浏览器已成功关闭！
+2020-07-07 15:56:50.110 [main-79] INFO  com.sh.stt.listener.LogListener.onFinish - ====================www-selenium结束====================

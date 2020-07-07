@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -82,11 +81,9 @@ public class BaseDriver {
      * 初始化多项等待时长参数
      */
     public BaseDriver() {
-        /* 获取类加载的根路径 驱动的 test-classes 路径 */
-        String driverParentPath = this.getClass().getResource("/").getPath() + "driver" + File.separator;
         /* 多种驱动文件路径配置参数 */
-        chromeDriverPath = driverParentPath + PropertiesReader.getKey("driver.chromeDriver");
-        firefoxDriverPath = driverParentPath + PropertiesReader.getKey("driver.firefoxDriver");
+        chromeDriverPath = PropertiesReader.getKey("driver.chromeDriver");
+        firefoxDriverPath = PropertiesReader.getKey("driver.firefoxDriver");
         implicitlyWait = Long.valueOf(PropertiesReader.getKey("driver.timeouts.implicitlyWait"));
         pageLoadTimeout = Long.valueOf(PropertiesReader.getKey("driver.timeouts.pageLoadTimeout"));
         setScriptTimeout = Long.valueOf(PropertiesReader.getKey("driver.timeouts.setScriptTimeout"));
